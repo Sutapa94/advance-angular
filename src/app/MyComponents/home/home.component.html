@@ -1,0 +1,17 @@
+<p>
+    <button class="btn btn-primary btn-sm" routerLink="form">New From </button>
+</p>
+<p>
+    <button class="btn btn-primary btn-sm" routerLink="">Back</button>
+</p>
+
+<div class="container">
+    <div class="row">
+        <!-- <div *ngIf="allow ; else elseBlock">Please click on toggle button to see new form</div>
+        <ng-template #elseBlock>
+            <app-newform [title]="title"></app-newform>
+        </ng-template> -->
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
