@@ -8,6 +8,7 @@ import { AboutComponent } from './MyComponents/about/about.component';
 import { ContactusComponent } from './MyComponents/contactus/contactus.component';
 import { NewformComponent } from './MyComponents/home/newform/newform.component';
 import { DefaultComponent } from './MyComponents/home/default/default.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DefaultComponent } from './MyComponents/home/default/default.component'
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
