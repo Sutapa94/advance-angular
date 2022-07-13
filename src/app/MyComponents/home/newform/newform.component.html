@@ -12,7 +12,8 @@
                         formControlName="name"
                     >
                     <span *ngIf="newForm.get('userData.name').invalid && newForm.get('userData.name').touched">
-                        Please enter your name
+                        <span *ngIf="newForm.get('userData.name').errors['restrictName']"> This Name is not Valid </span>
+                        <span *ngIf="newForm.get('userData.name').errors['required']"> This Field is Required </span>
                     </span>
                 </div>
                 <div class="form-group">
@@ -24,7 +25,8 @@
                         formControlName="email"
                     >
                     <span *ngIf="newForm.get('userData.email').invalid && newForm.get('userData.email').touched">
-                        Please enter correct email id
+                        <span *ngIf="newForm.get('userData.email').errors['restrictEmail']">Email is not Valid</span>
+                        <span *ngIf="newForm.get('userData.email').errors['required']"> This Field is Required </span>
                     </span>
                 </div>
             </div>
@@ -46,10 +48,23 @@
                     > {{gender}}
                 </label>
             </div>
+            <div formArrayName="hobbies">
+                <h4> your Hobbies </h4>
+                <button 
+                    class="btn btn-primary" 
+                    type="button" 
+                    (click)="onAddHobby()"
+                > Add hobby</button>
+                <div 
+                    class="fomr-group" 
+                    *ngFor="let hobbyControl of getControls() ; let i = index"
+                ><input type="text" [formControlName]="i">
+                </div>
+            </div>
             <span *ngIf="newForm.invalid && newForm.touched">
                 Form is invalid
             </span>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" [disabled]="newForm.invalid">Save</button>
         </form>
     </div>
 </div>
