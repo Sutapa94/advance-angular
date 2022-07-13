@@ -1,4 +1,4 @@
-<h4>{{title}}</h4>
+<h4>{{title | uppercase | textShort}}</h4>
 <div class="container">
     <div class="row">
         <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
@@ -37,6 +37,15 @@
                     class="form-control" 
                     id="about"
                     formControlName="about"
+                >
+            </div>
+            <div class="form-group">
+                <label for="date">Select your birthdate</label>
+                <input 
+                    type="date" 
+                    class="form-control" 
+                    id="date"
+                    formControlName="date"
                 >
             </div>
             <div class="radio" *ngFor="let gender of genders">

@@ -11,7 +11,7 @@ import { MyserviceService } from 'src/app/Services/myservice.service';
 export class NewformComponent implements OnInit {
   // @Input() title:string;
   genders=["Male","Female"];
-  title:string
+  title:string;
   newForm : FormGroup;
   restrictName = ["Sam","Ryan"];
   restrictEmail = ["test@test.com","test1@test.com"];
@@ -26,6 +26,7 @@ export class NewformComponent implements OnInit {
         'email' : new FormControl(null,[Validators.required , Validators.email], this.restrictEmailValidator.bind(this))
       }),      
       'about' : new FormControl(null),
+      'date' : new FormControl(null,Validators.required),
       'gender' : new FormControl(null,Validators.required),
       'hobbies' : new FormArray([])
     });
@@ -56,7 +57,7 @@ export class NewformComponent implements OnInit {
 
   //Custom Async Validator
   restrictEmailValidator(controls : FormControl) : Promise<any> | Observable<any> {
-    
+
     const promise = new Promise<any> ((resolve,reject) => {
       setTimeout(() => {
         if(this.restrictEmail.indexOf(controls.value) !== -1){
