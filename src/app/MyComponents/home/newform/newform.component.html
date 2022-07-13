@@ -80,7 +80,7 @@
             <span *ngIf="newForm.invalid && newForm.touched">
                 Form is invalid
             </span>
-            <button type="submit" class="btn btn-primary" [disabled]="newForm.invalid">Save</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!newForm.valid">Save</button>
         </form>
     </div>
 </div>

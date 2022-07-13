@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,6 +7,10 @@ import { Injectable } from '@angular/core';
 export class MyserviceService {
   title:string="Welcome to Angular Reactive Form";
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
+
+  addUser(user){
+    return this.http.post('https://advancenewform-default-rtdb.firebaseio.com/posts.json',user)
+  }
 
 }
