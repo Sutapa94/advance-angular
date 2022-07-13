@@ -1,4 +1,11 @@
-<h4>{{title | uppercase | textShort}}</h4>
+<h4>{{title | uppercase | textShort:32}}</h4>
+<br>
+<div style="background-color: lightblue;width:auto;height:30px">
+    <h5>
+        Output : {{asyncPipe | async}}
+    </h5>
+</div>
+<br>
 <div class="container">
     <div class="row">
         <form [formGroup]="newForm" (ngSubmit)="onSubmit()">

@@ -15,6 +15,11 @@ export class NewformComponent implements OnInit {
   newForm : FormGroup;
   restrictName = ["Sam","Ryan"];
   restrictEmail = ["test@test.com","test1@test.com"];
+  asyncPipe = new Promise((resolve,reject) => {
+    setTimeout(() => {
+      resolve("Hurray!!! Asyn Pipe Output Came after 2 Sec")
+    },2000)
+  });
 
   constructor(private service:MyserviceService) { }
 

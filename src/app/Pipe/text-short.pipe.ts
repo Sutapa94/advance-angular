@@ -8,7 +8,7 @@ export class TextShortPipe implements PipeTransform {
   transform(value: string, args?: number): string {
     const index = args
     const lengthOfvalue = value.length
-    if(lengthOfvalue >= index){
+    if(lengthOfvalue > index){
       const result = value.slice(0,index)+"..."
       return result
     }
