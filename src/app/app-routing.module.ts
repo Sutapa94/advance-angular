@@ -9,7 +9,7 @@ import { LoginComponent } from './MyComponents/login/login.component';
 import { SignUpComponent } from './MyComponents/sign-up/sign-up.component';
 
 const routes: Routes = [
-  {path:"",redirectTo:"home",pathMatch:"full"},
+  {path:"",redirectTo:"login",pathMatch:"full"},
   {path:"home",component:HomeComponent,children:[
     {path:"",component:DefaultComponent},
     {path:"form",component:NewformComponent},
