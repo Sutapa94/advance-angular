@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+            <form [formGroup]="signUpForm" (ngSubmit)="onLogin()">
+                <div class="form-group">
+                    <label for="email">Email Id</label>
+                    <input type="email" id="email" class="form-control" formControlName="email">
+                    <span *ngIf="!signUpForm.get('email').valid && signUpForm.get('email').touched" class="errorMsg">
+                        <span *ngIf="signUpForm.get('email').errors['required']">
+                            This field is required
+                        </span>
+                        <span *ngIf="signUpForm.get('email').errors['email']">
+                            Email Id is not Valid
+                        </span>
+                        <span *ngIf="signUpForm.get('email').errors['wrongEmail']">
+                            Incorrect Email Id
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" formControlName="password">
+                    <span *ngIf="!signUpForm.get('password').valid && signUpForm.get('password').touched" class="errorMsg">
+                        <span *ngIf="signUpForm.get('password').errors['required']">
+                            This field is required
+                        </span>
+                        <span *ngIf="signUpForm.get('password').errors['wrongPassword']">
+                            Incorrect Password
+                        </span>
+                        <span *ngIf="signUpForm.get('password').errors['pattern']">
+                            Password pattern is wrong
+                        </span>
+                    </span>
+                </div>
+                <br>
+                <div>
+                    <button class="btn btn-primary btn-sm" type="submit" [disabled]="!signUpForm.valid">Login</button> |
+                    <button class="btn btn-primary btn-sm" routerLink="/signUp" type="button">New User ? Switch To SignUp</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,8 @@ import { NewformComponent } from './MyComponents/home/newform/newform.component'
 import { DefaultComponent } from './MyComponents/home/default/default.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextShortPipe } from './Pipe/text-short.pipe';
+import { SignUpComponent } from './MyComponents/sign-up/sign-up.component';
+import { LoginComponent } from './MyComponents/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { TextShortPipe } from './Pipe/text-short.pipe';
     ContactusComponent,
     NewformComponent,
     DefaultComponent,
-    TextShortPipe
+    TextShortPipe,
+    SignUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
