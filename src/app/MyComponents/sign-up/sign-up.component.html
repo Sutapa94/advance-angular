@@ -1,7 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-6 col-md-offset-3">
-            <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+            <div *ngIf="error" class="alert alert-danger">
+                <p> {{ error }} </p>
+            </div>
+            <div *ngIf="isLoading">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+            <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()" *ngIf="!isLoading">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" class="form-control" formControlName="name">

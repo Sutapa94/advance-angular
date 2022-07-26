@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextShortPipe } from './Pipe/text-short.pipe';
 import { SignUpComponent } from './MyComponents/sign-up/sign-up.component';
 import { LoginComponent } from './MyComponents/login/login.component';
+import { LoadingSpinnerComponent } from './MyComponents/shared/loading-spinner/loading-spinner.component';
+import { SignUpInterceptorService } from './MyComponents/shared/Auth Service/sign-up-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { LoginComponent } from './MyComponents/login/login.component';
     DefaultComponent,
     TextShortPipe,
     SignUpComponent,
-    LoginComponent
+    LoginComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,13 @@ import { LoginComponent } from './MyComponents/login/login.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS , 
+      useClass:SignUpInterceptorService,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

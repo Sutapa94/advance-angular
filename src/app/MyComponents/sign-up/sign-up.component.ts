@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SignUpService } from '../shared/Auth Service/sign-up.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,11 +9,13 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  isLoading:boolean=false;
+  error:string=null;
 
   signUpForm:FormGroup = new FormGroup({});
   
 
-  constructor(private FB : FormBuilder) {}
+  constructor(private FB : FormBuilder, private service : SignUpService , private router : Router) {}
 
   ngOnInit(): void {
     this.signUpForm = this.FB.group({
@@ -58,6 +62,17 @@ export class SignUpComponent implements OnInit {
 
   onSignUp(){
     console.log(this.signUpForm);
+    const email = this.signUpForm.value.email
+    const password = this.signUpForm.value.password
+    this.isLoading = true;
+    this.service.signUp(email,password).subscribe(resData => {
+      console.log(resData);
+      this.isLoading=false;
+      this.router.navigate(['/home']);
+    },errorMsg => {
+      this.error= errorMsg;
+      this.isLoading=false;
+    })
     this.signUpForm.reset();
   }
 

@@ -40,8 +40,10 @@ export class NewformComponent implements OnInit {
   onSubmit(){
     console.log(this.newForm.status);
     console.log(this.newForm);
-    this.service.addUser(this.newForm.value).subscribe((value)=>{
-      console.log(value)
+    this.service.addUser(this.newForm.value).subscribe(res => {
+      console.log(res)
+    },error => {
+      console.log(error)
     });
   }
 

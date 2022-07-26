@@ -1,21 +1,23 @@
-<ul class="nav">
-  <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-    true}">
-    <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
-  </li>
-  <li class="nav-item" routerLinkActive="active">
-    <a class="nav-link" routerLink="/about">About</a>
-  </li>
-  <li class="nav-item" routerLinkActive="active">
-    <a class="nav-link" routerLink="/contactus">Contact Us</a>
-  </li>
-  <!-- <li class="nav-item" routerLinkActive="active">
-    <a class="nav-link" routerLink="/signUp">SignUp</a>
-  </li> -->
-  <li class="nav-item" routerLinkActive="active">
-    <a class="nav-link" routerLink="/login">Login</a>
-  </li>
-</ul>
+<div>
+  <ul class="nav">
+    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+    true}" *ngIf="isAuthenticated">
+      <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="/about">About</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active">
+      <a class="nav-link" routerLink="/contactus">Contact Us</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="!isAuthenticated">
+      <a class="nav-link" routerLink="/login">Login</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="isAuthenticated">
+      <a class="nav-link" style="cursor: pointer;" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</div>
 
 <router-outlet></router-outlet>
 
