@@ -45,6 +45,7 @@ export class NewformComponent implements OnInit {
     },error => {
       console.log(error)
     });
+    this.newForm.reset();
   }
 
   onAddHobby(){
