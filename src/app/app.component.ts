@@ -37,6 +37,7 @@ export class AppComponent implements OnInit,OnDestroy{
     this.userSub = this.signUpService.user.subscribe(user => {
       this.isAuthenticated= !user ? false : true;
     });
+    this.signUpService.autoLogin();
   }
   ngOnDestroy(): void {
     this.userSub.unsubscribe();
